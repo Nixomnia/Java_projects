@@ -1,35 +1,56 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
-class Task4{
+class GroceryList{
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter 5 numbers :");
+        int empty = 1;
 
-        int [] numbers = new int[5];
-        int sum = 0;
-        int max = 0;
+        ArrayList<String> groceryList;
+        groceryList = new ArrayList();
 
-        for(int i = 0; i<5;i++){
-            numbers[i]= sc.nextInt();
+        System.out.println("Welcome to your grocery list!");
+        System.out.println("1. Enter 'a' to add an item.");
+        System.out.println("2. Enter 'r' to remove an item.");
+        System.out.println("3. Enter 'p' to print." );
+        System.out.println("4. Enter 'f' to check for an item.");
+        System.out.println("5. Enter 'c' to clear.");
+        while(empty != 0) {
+            System.out.println("Enter task : ");
+            char input = sc.next().charAt(0);
+
+            if (input == 'a') {
+                System.out.print("Enter item name: ");
+                String item = sc.next();
+                groceryList.add(item);
+//                empty++;
+            }
+
+            if (input == 'r') {
+                System.out.print("Enter item name: ");
+                String item = sc.next();
+                groceryList.remove(item);
+//                empty++;
+            }
+
+            if (input == 'p') {
+                System.out.println(groceryList);
+//                empty++;
+            }
+
+            if (input == 'f') {
+                System.out.print("Enter item name: ");
+                String item = sc.next();
+                Boolean ans = groceryList.contains(item);
+                if (ans == true) System.out.println("Item found.");
+                else System.out.println("Item not found.");
+//                empty++;
+            }
+
+            if (input == 'c') {
+                groceryList.clear();
+                empty = -1;
+            }
         }
-        int min = numbers[0];
-        for(int j = 0;j<=4;j++){
-            sum += numbers[j];
-            if(numbers[j]>max) max = numbers[j];
-            if(numbers[j]<min) min = numbers[j];
-        }
-        double average = (double)sum/5;
-        System.out.println("The sum is : " + sum);
-        System.out.println("The average is : " + average);
-        System.out.println("The maximum value is : " + max);
-        System.out.println("The minimum value is : " + min);
-
-
-
-
-
-
-
     }
-
 }
